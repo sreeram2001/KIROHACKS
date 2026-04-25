@@ -1,0 +1,43 @@
+{
+    "manifest_version": 3,
+    "name": "TrueCost",
+    "version": "0.1.0",
+    "description": "Reveals the true expected cost of online purchases by analyzing hidden cost layers and surfacing better alternatives.",
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "host_permissions": [
+        "https://*.amazon.com/*",
+        "https://*.amazon.co.uk/*",
+        "https://*.walmart.com/*",
+        "https://*.target.com/*",
+        "https://*.bestbuy.com/*",
+        "https://*.costco.com/*",
+        "https://*.ebay.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.amazon.com/*",
+                "https://*.amazon.co.uk/*",
+                "https://*.walmart.com/*",
+                "https://*.target.com/*",
+                "https://*.bestbuy.com/*",
+                "https://*.costco.com/*",
+                "https://*.ebay.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    }
+}

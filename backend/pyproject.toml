@@ -1,0 +1,30 @@
+[project]
+name = "truecost-backend"
+version = "0.1.0"
+description = "TrueCost Engine backend — AWS Lambda functions for TEC computation, chatbot, and profile management"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.10,<3",
+    "boto3>=1.35,<2",
+    "strands-agents>=0.1.0",
+    "strands-agents-tools>=0.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3,<9",
+    "hypothesis>=6.115,<7",
+    "pytest-cov>=6.0,<7",
+    "moto>=5.0,<6",
+]
+
+[build-system]
+requires = ["setuptools>=75.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.hypothesis]
+max_examples = 100
