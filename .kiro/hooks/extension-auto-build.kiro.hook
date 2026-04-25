@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "name": "Extension Auto Build",
+  "description": "Rebuilds the Chrome extension and copies manifest when source files change",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "extension/src/**/*.tsx",
+      "extension/src/**/*.ts"
+    ]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "cd extension && npm run build && cp public/manifest.json dist/ 2>&1 | tail -5"
+  }
+}

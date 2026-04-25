@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Run Tests After Task",
+  "description": "Runs the full test suite after each spec task is completed to ensure the codebase stays green",
+  "version": "1",
+  "when": {
+    "type": "postTaskExecution"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "cd backend && python3 -m pytest tests/ -v 2>&1 | tail -5"
+  }
+}

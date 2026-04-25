@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Security Review on Write",
+  "description": "Reviews all write operations to ensure no credentials or PII are exposed in code",
+  "version": "1",
+  "when": {
+    "type": "preToolUse",
+    "toolTypes": [
+      "write"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Before writing this code, verify it does not contain any hardcoded API keys, AWS credentials, secret tokens, or user PII (emails, names, addresses). If any are found, replace them with environment variables or placeholder values."
+  }
+}

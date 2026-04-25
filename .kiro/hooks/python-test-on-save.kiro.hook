@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "name": "Python Tests on Save",
+  "description": "Runs pytest when any Python file in the backend is saved, catching type errors and test failures immediately",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "backend/src/*.py",
+      "backend/src/**/*.py"
+    ]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "cd backend && python3 -m pytest tests/ -x --tb=short 2>&1 | tail -10"
+  }
+}
